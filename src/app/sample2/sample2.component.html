@@ -1,0 +1,21 @@
+<h5> Hacker News search ! </h5>
+
+<label>Search query : {{ query$ | async }} </label>
+<input type="text" (keyup)="query$.next($event.target.value)" />
+
+<label>Page number {{ page$ | async }} </label>
+<input type="number" min="0" (change)="page$.next($event.target.value)" />
+
+<label>Tags {{ tags$ | async }}</label>
+<input type="text" (keyup)="tags$.next($event.target.value)" />
+
+<!-- <label> Search item </label>
+<div> {{ search$ | async | json }}</div> -->
+
+<div>
+  <ul *ngIf="(searchQuery$ | async) as results">
+    <li *ngFor="let result of results.hits">
+      {{ result.title || result.story_text }} - {{ result.story_url }} - {{ result.created_at | date: 'dd/MM/yyyy' }}
+    </li>
+  </ul>
+</div>

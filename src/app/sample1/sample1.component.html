@@ -1,0 +1,12 @@
+<div>
+  <input type="text" (keyup)="onInputChange($event)" />
+
+  <p>Simple async pipe which subscribe to the Obs itself</p>
+  <p> {{ inputObs$ | async }} </p>
+  <hr>
+  <p>Observable with debounceTime with a delay of 2 seconds</p>
+  <p> {{ inputObsDelay$ | async }}</p>
+  <hr>
+  <p>Map pipe which will make the character uppercase</p>
+  <p> {{ inputObsMap$ | async }}</p>
+</div>
